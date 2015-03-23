@@ -51,7 +51,8 @@
       var randomIndexes = [];
       var outString = "";
       var trueRandom= new Uint32Array(randomSize);
-      window.crypto.getRandomValues(trueRandom);
+      var cryptoObj = window.crypto || window.msCrypto; 
+      cryptoObj.crypto.getRandomValues(trueRandom);
       while ((randomIndexes.length < count) && (randomSize >= 0)){
         randomSize--;
         randomnumber = trueRandom[randomSize] % corpus.length;
